@@ -1,0 +1,18 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+
+function App() {
+	return (
+		<>
+			opjfpojpjpososd
+			<BrowserRouter>
+				<Routes>
+					<Route path='/' element={<Home />}></Route>
+					<Route path='/done' element={<>DONEE</>}></Route>
+				</Routes>
+			</BrowserRouter>
+		</>
+	);
+}
+
+export default App;

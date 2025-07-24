@@ -1,11 +1,12 @@
 import { Hono } from "hono";
-import { auth } from "../src/lib/auth";
+import { auth } from "./lib/auth";
 import { cors } from "hono/cors";
 const app = new Hono();
+
 app.use(
-	"/api/auth/*", // or replace with "*" to enable cors for all routes
+	"/api/auth/*",
 	cors({
-		origin: "http://localhost:3001", // replace with your origin
+		origin: "http://localhost:5175", // replace with your origin
 		allowHeaders: ["Content-Type", "Authorization"],
 		allowMethods: ["POST", "GET", "OPTIONS"],
 		exposeHeaders: ["Content-Length"],
