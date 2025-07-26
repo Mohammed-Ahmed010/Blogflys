@@ -12,6 +12,17 @@ export const authClient = createAuthClient({
 		}),
 	],
 });
+export function useCurrentUser() {
+	const session = useSession();
+	const user = session.data?.user;
+	const isLoading = !session;
+	const isAuthenticated = !!session.data?.user;
+	return {
+		user,
+		isLoading,
+		isAuthenticated,
+	};
+}
 
 export const {
 	useSession,

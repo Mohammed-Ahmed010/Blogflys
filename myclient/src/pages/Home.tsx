@@ -1,31 +1,13 @@
-import { signIn } from "../lib/auth-client";
-import { useNavigate } from "react-router-dom";
+import { useCurrentUser } from "@/lib/auth-client";
 
 export default function Home() {
-	const navigate = useNavigate();
-	const handleGoogleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-
-		await signIn.social(
-			{ provider: "google" },
-			{
-				onSuccess: () => {
-					navigate("/done");
-				},
-				onError: (error) => {
-					console.error(error);
-				},
-			}
-		);
-	};
-
+	const { user, isLoading } = useCurrentUser();
+	if (isLoading) {
+		return <>Loading</>;
+	}
 	return (
 		<>
-			pofopsdjfopdsjpfojp
-			<div>HOME</div>
-			<form onSubmit={handleGoogleLogin}>
-				<button type='submit'>Login with Google</button>
-			</form>
+			Home {user?.name} {user?.email}
 		</>
 	);
 }
