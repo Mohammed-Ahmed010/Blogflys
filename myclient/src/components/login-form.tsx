@@ -2,31 +2,27 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { signIn } from "../lib/auth-client";
 import { useNavigate } from "react-router-dom";
-
+import { useState } from "react";
+import { handleGoogleLogin, handleSubmitSignin } from "@/lib/logins";
 export function LoginForm({
 	className,
 	...props
 }: React.ComponentProps<"form">) {
 	const navigate = useNavigate();
-	const handleGoogleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
-		await signIn.social(
-			{ provider: "google", disableRedirect: true },
-			{
-				onSuccess: () => {
-					navigate("/home");
-				},
-				onError: (error) => {
-					console.error(error);
-				},
-			}
-		);
+		handleSubmitSignin({ email, password }, () => navigate("/home"));
 	};
+
 	return (
-		<form className={cn("flex flex-col gap-6", className)} {...props}>
+		<form
+			className={cn("flex flex-col gap-6", className)}
+			{...props}
+			onSubmit={handleSubmit}
+		>
 			<div className='flex flex-col items-center gap-2 text-center'>
 				<h1 className='text-2xl font-bold'>Login to your account</h1>
 				<p className='text-muted-foreground text-sm text-balance'>
@@ -41,6 +37,7 @@ export function LoginForm({
 						type='email'
 						placeholder='m@example.com'
 						required
+						onChange={(e) => setEmail(e.target.value)}
 					/>
 				</div>
 				<div className='grid gap-3'>
@@ -53,7 +50,12 @@ export function LoginForm({
 							Forgot your password?
 						</a>
 					</div>
-					<Input id='password' type='password' required />
+					<Input
+						id='password'
+						type='password'
+						required
+						onChange={(e) => setPassword(e.target.value)}
+					/>
 				</div>
 				<Button type='submit' className='w-full'>
 					Login
@@ -67,7 +69,9 @@ export function LoginForm({
 				<Button
 					variant='outline'
 					className='w-full'
-					onClick={async (e) => await handleGoogleLogin(e)}
+					onClick={(e) =>
+						handleGoogleLogin(e, () => navigate("/home"))
+					}
 				>
 					<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
 						<path
@@ -80,7 +84,7 @@ export function LoginForm({
 			</div>
 			<div className='text-center text-sm'>
 				Don&apos;t have an account?{" "}
-				<a href='#' className='underline underline-offset-4'>
+				<a href='/signup' className='underline underline-offset-4'>
 					Sign up
 				</a>
 			</div>
