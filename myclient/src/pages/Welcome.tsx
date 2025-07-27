@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Edit, Users, TrendingUp } from "lucide-react";
+import Navigation from "@/components/navigation";
 
 export default function Welcome() {
 	return (
 		<>
+			<Navigation />
 			<div className='relative bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen'>
 				{/* Hero Section */}
 				<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16'>
