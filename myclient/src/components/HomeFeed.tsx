@@ -246,11 +246,11 @@ export default function HomeFeed() {
 						</SelectTrigger>
 						<SelectContent>
 							<SelectItem value='all'>All categories</SelectItem>
-							{/* {allTags.map((tag) => (
+							{tags.map((tag) => (
 								<SelectItem key={tag} value={tag}>
 									{tag}
 								</SelectItem>
-							))} */}
+							))}
 						</SelectContent>
 					</Select>
 
