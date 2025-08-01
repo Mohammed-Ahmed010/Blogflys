@@ -4,6 +4,7 @@ import Login from "@/pages/login";
 import Welcome from "@/pages/Welcome";
 import SignUp from "@/pages/SignUp";
 import SignOut from "@/pages/SignOut";
+import Create from "./pages/Create";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 					<Route path='/login' element={<Login />}></Route>
 					<Route path='/signup' element={<SignUp />}></Route>
 					<Route path='/logout' element={<SignOut />}></Route>
+					<Route path='/create' element={<Create />}></Route>
 				</Routes>
 			</BrowserRouter>
 		</>
