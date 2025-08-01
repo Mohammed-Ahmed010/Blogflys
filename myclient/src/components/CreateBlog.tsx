@@ -189,7 +189,7 @@ Happy writing! ✨`,
 						{/* Form Section */}
 						<div className='lg:col-span-1 space-y-6'>
 							<Card className='shadow-lg border-0'>
-								<CardHeader className='bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg'>
+								<CardHeader className='p-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-t-lg'>
 									<CardTitle className='flex items-center gap-2'>
 										<FileText className='w-5 h-5' />
 										Post Details
@@ -340,8 +340,8 @@ Happy writing! ✨`,
 
 						{/* Editor Section */}
 						<div className='lg:col-span-2'>
-							<Card className='border-0 h-[800px]'>
-								<CardHeader className='bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-t-lg'>
+							<Card className=' shadow-none border-0 h-[800px]'>
+								<CardHeader className='p-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-t-lg'>
 									<CardTitle>Content Editor</CardTitle>
 								</CardHeader>
 								<CardContent className='p-0 h-full'>
